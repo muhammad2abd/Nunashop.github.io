@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NunaShop | Beauty & Skincare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ff6b9d;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.15);
+            margin-bottom: 20px;
+            border: 1px solid #ffe4ec;
+        }
+        
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8eb4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff6b9d, #ff4081);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .profile-bio {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+        
+        .highlight {
+            color: #ff6b9d;
+            font-weight: 600;
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 18px 25px;
+            background: white;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 2px solid #ffe4ec;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .link-button:hover:before {
+            left: 100%;
+        }
+        
+        .link-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-color: #ff6b9d;
+        }
+        
+        .link-button i {
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .button-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+        
+        .button-subtext {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            font-weight: normal;
+            margin-top: 3px;
+        }
+        
+        .arrow {
+            color: #ccc;
+            font-size: 18px;
+        }
+        
+        /* Platform-specific colors */
+        .tiktok {
+            border-left: 5px solid #000000;
+        }
+        
+        .tiktok i {
+            color: #000000;
+        }
+        
+        .whatsapp {
+            border-left: 5px solid #25D366;
+        }
+        
+        .whatsapp i {
+            color: #25D366;
+        }
+        
+        .telegram {
+            border-left: 5px solid #0088cc;
+        }
+        
+        .telegram i {
+            color: #0088cc;
+        }
+        
+        .store {
+            border-left: 5px solid #ff6b9d;
+        }
+        
+        .store i {
+            color: #ff6b9d;
+        }
+        
+        .footer {
+            color: #999;
+            font-size: 13px;
+            margin-top: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .domain {
+            color: #ff6b9d;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Promo banner */
+        .promo-banner {
+            background: linear-gradient(90deg, #ff6b9d, #ff8eb4);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 25px 20px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                font-size: 45px;
+            }
+            
+            .profile-name {
+                font-size: 24px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">NunaShop</div>
+            <div class="tagline">Premium Beauty & Skincare</div>
+        </div>
+        
+        <div class="promo-banner">
+            ✨ Free Shipping on Orders Over $50 ✨
+        </div>
+        
+        <div class="profile-card">
+            <div class="profile-img">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h1 class="profile-name">Nuna Beauty</h1>
+            <p class="profile-bio">
+                Your trusted source for <span class="highlight">premium skincare</span>, 
+                beauty tips, and expert advice. 
+                <br><br>
+                Shop our curated collection or connect with us below!
+            </p>
+            
+            <div class="links-container">
+                <!-- Main Store -->
+                <a href="https://nunashop.github.io" 
+                   target="_blank" 
+                   class="link-button store">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="button-text">
+                        Visit Our Online Store
+                        <span class="button-subtext">Shop premium skincare products</span>
+                    </div>
+                    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@best_skin_foryou?_r=1&_t=ZS-923vqGZu7Kn" 
+                   target="_blank" 
+                   class="link-button tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <div class="button-text">
+                        Follow on TikTok
+                        <span class="button-subtext">Daily skincare tips & tutorials</span>
+                    </div>
+                    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/1234567890?text=Hi%20NunaShop!%20I%20have%20a%20question%20about%20your%20products" 
+                   target="_blank" 
+                   class="link-button whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="button-text">
+                        Chat on WhatsApp
+                        <span class="button-subtext">Get personal skincare advice</span>
+                    </div>
+                    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/nunashop" 
+                   target="_blank" 
+                   class="link-button telegram">
+                    <i class="fab fa-telegram"></i>
+                    <div class="button-text">
+                        Join Telegram Channel
+                        <span class="button-subtext">Exclusive deals & updates</span>
+                    </div>
+                    <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Connect with us on your preferred platform</p>
+            <p class="domain">Nunashop.github.io</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #bbb;">
+                © 2023 NunaShop Beauty. All rights reserved.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate promo banner
+            const banner = document.querySelector('.promo-banner');
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(-20px)';
+            
+            // Animate profile card
+            const card = document.querySelector('.profile-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            // Animate links
+            const links = document.querySelectorAll('.link-button');
+            
+            setTimeout(() => {
+                banner.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                banner.style.opacity = '1';
+                banner.style.transform = 'translateY(0)';
+                
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                
+                // Animate links with delay
+                links.forEach((link, index) => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(-20px)';
+                    
+                    setTimeout(() => {
+                        link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateX(0)';
+                    }, index * 100 + 800);
+                });
+            }, 300);
+            
+            // Add click tracking
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const platform = this.querySelector('.button-text').textContent.split('\n')[0];
+                    console.log(`NunaShop: Clicked ${platform} link`);
+                    // Add analytics here
+                });
+            });
+            
+            // Add hover sound effect (optional)
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.cursor = 'pointer';
+                });
+            });
+        });
+        
+        // Add a simple visitor counter (stored in localStorage)
+        window.addEventListener('load', function() {
+            if (!localStorage.getItem('nunashop_visits')) {
+                localStorage.setItem('nunashop_visits', '0');
+            }
+            let visits = parseInt(localStorage.getItem('nunashop_visits'));
+            visits++;
+            localStorage.setItem('nunashop_visits', visits.toString());
+            
+            // Display in console (you can show it on page if you want)
+            console.log(`NunaShop visits: ${visits}`);
+        });
+    </script>
+</body>
+</html>
